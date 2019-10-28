@@ -5,8 +5,9 @@
  *      Author: TBolt
  */
 
-#ifndef CHARDISTRIBUTION_H_
-#define CHARDISTRIBUTION_H_
+#ifndef __CHARDISTRIBUTION_H_INCLUDED__   // if x.h hasn't been included yet...
+#define __CHARDISTRIBUTION_H_INCLUDED__
+
 #include<vector>
 #include<experimental/random>
 #include<iostream>
@@ -17,10 +18,11 @@ private:
 	int total;
 public:
 	CharDistribution();
+	CharDistribution(int);
 	virtual ~CharDistribution();
 	void occurs(char c);
 	char getRandomChar();
 	void printCounts();
 };
 
-#endif /* CHARDISTRIBUTION_H_ */
+#endif
