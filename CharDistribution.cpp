@@ -12,6 +12,11 @@ CharDistribution::CharDistribution(): counts(27,0), total(0) {
 
 }
 
+CharDistribution::CharDistribution(int num): counts(0,0), total(0) {
+	// TODO Auto-generated constructor stub
+
+}
+
 CharDistribution::~CharDistribution() {
 	// TODO Auto-generated destructor stub
 }
