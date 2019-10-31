@@ -51,7 +51,7 @@ int create_random_file(std::string inFileName, std::string outFileName){
         catch(std::exception &e) {
             //std::cout << "Error: !!!!!!!!!!!" << e.what() << " at " << count << std::endl;
         }
-        std::cout << "Key: \"" << key << "\" Value: \"" << queue.at(queue.size()-1) << "\"" << "Iteration: " << count << std::endl;
+        //std::cout << "Key: \"" << key << "\" Value: \"" << queue.at(queue.size()-1) << "\"" << " Iteration: " << count << std::endl;
         queue.erase(queue.begin());
 
         count++;
@@ -62,15 +62,22 @@ int create_random_file(std::string inFileName, std::string outFileName){
     int out_size;
     std::cout << "Enter the number of characters randomly generated: ";
     std::cin >> out_size;
+    int num_of_spaces = 0;
     for (size_t i = 0 ; i < out_size - window; i++) {
         std::string key = "";
         for (size_t i = 0; i < out_queue.size(); i++){
             key += out_queue.at(i);
         }
         char newChar = map.find(key).getRandomChar();
+        if (newChar == ' ')
+            num_of_spaces++;
         outFile << newChar; 
         out_queue.push_back(newChar);
         out_queue.erase(out_queue.begin());
+        if(num_of_spaces == 9){
+            outFile << "\n";
+            num_of_spaces = 0;  
+        }
     }
 
     return 0;

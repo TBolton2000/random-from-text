@@ -6,7 +6,7 @@
 using namespace std;
 
 int main() {
-	create_random_file("merchant.txt", "merchant_out.txt");
+	create_random_file("bee_out.txt", "bee_random.txt");
 }
 
 
