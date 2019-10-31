@@ -21,12 +21,12 @@ private:
 	int findHashIndex(std::string key){
 		int toInt = 0;
 		for(size_t i = 0; i < key.size(); i++){
-			toInt += key[i]*3;
+			toInt += key[i]*43;
 		}
-		return (toInt%101);
+		return (toInt%1001);
 	};
 public:
-	MapHash(): table(101,std::vector<std::pair<std::string,V>>()), total(0){};
+	MapHash(): table(1001,std::vector<std::pair<std::string,V>>()), total(0){};
 	virtual ~MapHash() {};
 	int size() {
 		return total;
