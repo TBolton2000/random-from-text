@@ -11,6 +11,7 @@
 #include<vector>
 #include<experimental/random>
 #include<iostream>
+#include<ctime>
 
 class CharDistribution {
 private:

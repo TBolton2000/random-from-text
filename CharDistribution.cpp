@@ -9,7 +9,7 @@
 
 CharDistribution::CharDistribution(): counts(27,0), total(0) {
 	// TODO Auto-generated constructor stub
-
+	std::experimental::reseed(std::time(NULL));
 }
 
 CharDistribution::CharDistribution(int num): counts(0,0), total(0) {

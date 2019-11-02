@@ -18,10 +18,11 @@ class MapHash {
 private:
 	std::vector<std::vector<std::pair<std::string,V>>> table;
 	int total;
+
 	int findHashIndex(std::string key){
 		int toInt = 0;
 		for(size_t i = 0; i < key.size(); i++){
-			toInt += key[i]*43;
+			toInt += key[i]*43*(i+1);
 		}
 		return (toInt%1001);
 	};
@@ -34,13 +35,20 @@ public:
 	bool empty() {
 		return (total == 0);
 	};
+	std::vector<int> checkEfficiency() {
+		std::vector<int> tableSize;
+		for(int i = 0; i < table.size(); i++) {
+			tableSize.push_back(table.at(i).size());
+		}
+		return tableSize;
+	}
 	V& find(std::string key) {
 		int index = findHashIndex(key);
 		for (size_t i = 0; i < table.at(index).size(); i++){
 			if (table.at(index).at(i).first == key)
 				return table.at(index).at(i).second;
 		}
-		throw std::runtime_error("Key does not exist");
+		throw std::runtime_error("Key, "+ key +" does not exist");
 	};
 	void put(std::string key, V value){
 		int index = findHashIndex(key);
