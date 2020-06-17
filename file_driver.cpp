@@ -1,9 +1,10 @@
 #include<fstream>
 #include<iostream>
 #include<vector>
+#include<chrono>
 #include"MapTree.h"
 
-int create_random_file(std::string inFileName, std::string outFileName){
+double create_random_file(std::string inFileName, std::string outFileName, int window_size){
     std::ifstream inFile(inFileName);
     std::ofstream outFile(outFileName);
 
@@ -17,9 +18,9 @@ int create_random_file(std::string inFileName, std::string outFileName){
         exit(1);
     }
 
-    int window;
-    std::cout << "Enter the window size: ";
-    std::cin >> window;
+    int window = window_size;
+    //std::cout << "Enter the window size: ";
+    //std::cin >> window;
 
     std::vector<char> queue;
     std::vector<char> out_queue;
@@ -59,9 +60,10 @@ int create_random_file(std::string inFileName, std::string outFileName){
 
     inFile.close();
 
-    int out_size;
-    std::cout << "Enter the number of characters randomly generated: ";
-    std::cin >> out_size;
+    int out_size = 10000000;
+    //std::cout << "Enter the number of characters randomly generated: ";
+    //std::cin >> out_size;
+    auto start = std::chrono::high_resolution_clock::now();
     int num_of_spaces = 0;
     for (size_t i = 0 ; i < out_size - window; i++) {
         std::string key = "";
@@ -79,6 +81,11 @@ int create_random_file(std::string inFileName, std::string outFileName){
             num_of_spaces = 0;  
         }
     }
+    auto end = std::chrono::high_resolution_clock::now();
+    double time_taken = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
 
-    return 0;
+    //std::cout << "Time taken by the BST implementation for window size = " << window << ", and output size = " << out_size << ", is " << time_taken << std::endl;
+
+    return time_taken;
+    //return 0;
 }

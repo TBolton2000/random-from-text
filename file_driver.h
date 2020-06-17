@@ -3,7 +3,7 @@
 
 #include<iostream>
 
-int create_random_file(std::string inFileName, std::string outFileName);
+double create_random_file(std::string inFileName, std::string outFileName, int window_size);
 
 
 
